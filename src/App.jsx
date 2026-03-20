@@ -78,7 +78,7 @@ function App() {
             <div className="app-content">
                 <header className="app-header">
                     <div>
-                        <h1>My Garage</h1>
+                        <h1>Moje Garáž</h1>
                         <p className="subtitle">{cars.length} vehicles • {cars.filter(c => c.status.locked).length} locked</p>
                     </div>
                 </header>

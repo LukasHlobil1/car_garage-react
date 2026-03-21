@@ -104,5 +104,34 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #999999;
+  background: linear-gradient(180deg, #94a3b8, #64748b);
+}
+
+/* Speciální EV prvky – jemná glow a hladké přechody */
+::selection {
+  background: rgba(0, 102, 255, 0.15);
+  color: #0066ff;
+}
+
+/* Elegantní focus pro přístupnost */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.3);
+  border-radius: 12px;
+}
+
+/* Animace pro loading stav – jako nabíjení EV */
+@keyframes chargePulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.loading-pulse {
+  animation: chargePulse 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }

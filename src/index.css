@@ -791,3 +791,125 @@ body {
   box-shadow: 0 0 0 3px rgba(60, 110, 71, 0.25);
   border-radius: 16px;
 }
+
+/* ============================================
+   SMARTCAR STYLY
+============================================ */
+.smartcar-badge {
+  background: linear-gradient(135deg, #3c6e47, #5b8c65);
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 500;
+  margin-left: 10px;
+  color: white;
+}
+
+.smartcar-tag {
+  display: inline-block;
+  background: rgba(60, 110, 71, 0.15);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 10px;
+  color: #3c6e47;
+  margin-top: 4px;
+}
+
+.smartcar-card {
+  border-left: 3px solid #3c6e47;
+}
+
+.smartcar-badge-modal {
+  display: inline-block;
+  background: #ecf3ec;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  color: #3c6e47;
+  margin-top: 8px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-primary-smartcar {
+  background: linear-gradient(135deg, #3c6e47, #5b8c65);
+  border: none;
+  border-radius: 40px;
+  padding: 8px 20px;
+  font-weight: 500;
+  font-size: 13px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary-smartcar:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(60, 110, 71, 0.3);
+}
+
+.btn-outline-smartcar {
+  background: transparent;
+  border: 1px solid #c75c5c;
+  border-radius: 40px;
+  padding: 8px 20px;
+  font-weight: 500;
+  font-size: 13px;
+  color: #c75c5c;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-smartcar:hover {
+  background: rgba(199, 92, 92, 0.1);
+}
+
+.loading-smartcar {
+  text-align: center;
+  padding: 20px;
+  color: #6c7a6d;
+  font-size: 14px;
+  margin: 20px 0;
+}
+
+.loading-spinner-large {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e2e8e2;
+  border-top-color: #3c6e47;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 20px;
+}
+
+.callback-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fefefe, #f8fafc);
+}
+
+.callback-content {
+  text-align: center;
+  padding: 40px;
+}
+
+.callback-content h2 {
+  margin-top: 20px;
+  color: #2c3e2f;
+}
+
+.callback-content p {
+  color: #6c7a6d;
+  margin-top: 8px;
+}
+
+.smartcar-hint {
+  font-size: 12px;
+  color: #9aa99a;
+  margin-top: 12px;
+}

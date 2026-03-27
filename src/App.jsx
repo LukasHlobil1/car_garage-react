@@ -21,8 +21,6 @@ function App() {
         model: '',
         plate: '',
         year: new Date().getFullYear(),
-        battery: 80,
-        range: 300,
         location: ''
     });
 
@@ -66,8 +64,6 @@ function App() {
             year: parseInt(newCar.year),
             plate: newCar.plate.toUpperCase(),
             status: {
-                battery: parseInt(newCar.battery),
-                range: parseInt(newCar.range),
                 locked: true,
                 location: newCar.location || 'Nezadáno'
             },
@@ -85,8 +81,6 @@ function App() {
             model: '',
             plate: '',
             year: new Date().getFullYear(),
-            battery: 80,
-            range: 300,
             location: ''
         });
         setShowAddCarModal(false);
@@ -109,8 +103,6 @@ function App() {
                     plate: carToEdit.plate.toUpperCase(),
                     status: {
                         ...car.status,
-                        battery: parseInt(carToEdit.battery),
-                        range: parseInt(carToEdit.range),
                         location: carToEdit.location || car.status.location
                     }
                 }
@@ -153,8 +145,6 @@ function App() {
         setCarToEdit({
             ...car,
             year: car.year,
-            battery: car.status.battery,
-            range: car.status.range,
             location: car.status.location
         });
         setShowEditCarModal(true);
@@ -286,22 +276,15 @@ function CarCard({ car, onClick, onEdit, onDelete }) {
                 </div>
                 <div className="car-stats">
                     <div>
-                        <span className="stat-label">🔋 Baterie</span>
-                        <span className="stat-value">{car.status.battery}%</span>
-                    </div>
-                    <div>
-                        <span className="stat-label">📊 Dojezd</span>
-                        <span className="stat-value">{car.status.range} km</span>
-                    </div>
-                    <div>
                         <span className="stat-label">🔒 Stav</span>
-                        <span className="stat-value" style={{ color: car.status.locked ? '#ff6b6b' : '#51cf66' }}>
-              {car.status.locked ? 'Zamčeno' : 'Odčeno'}
-            </span>
+                        <span className="stat-value" style={{ color: car.status.locked ? '#c75c5c' : '#3c6e47' }}>
+                            {car.status.locked ? 'Zamčeno' : 'Odčeno'}
+                        </span>
                     </div>
-                </div>
-                <div className="battery-bar">
-                    <div className="battery-fill" style={{ width: `${car.status.battery}%` }} />
+                    <div>
+                        <span className="stat-label">📍 Lokace</span>
+                        <span className="stat-value">{car.status.location || 'Nezadáno'}</span>
+                    </div>
                 </div>
             </div>
             <div className="car-actions">
@@ -317,13 +300,15 @@ function CarCard({ car, onClick, onEdit, onDelete }) {
 }
 
 // ============================================
-// MODÁLNÍ OKNO PRO PŘIDÁNÍ/ÚPRAVU AUTA
+// MODÁLNÍ OKNO PRO PŘIDÁNÍ/ÚPRAVU AUTA (S POSUVNÍKEM PRO ROK)
 // ============================================
 
 function CarModal({ title, car, setCar, onSave, onClose, isEdit }) {
     const handleChange = (field, value) => {
         setCar(prev => ({ ...prev, [field]: value }));
     };
+
+    const currentYear = new Date().getFullYear();
 
     return (
         <div className="modal-overlay" onClick={onClose}>
@@ -372,45 +357,26 @@ function CarModal({ title, car, setCar, onSave, onClose, isEdit }) {
 
                         <div className="form-group">
                             <label>Rok výroby</label>
-                            <input
-                                type="number"
-                                min="1990"
-                                max={new Date().getFullYear() + 1}
-                                value={car.year}
-                                onChange={(e) => handleChange('year', e.target.value)}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="form-row">
-                        <div className="form-group">
-                            <label>Nabití baterie (%)</label>
-                            <div className="range-wrapper">
+                            <div className="year-slider-wrapper">
                                 <input
                                     type="range"
-                                    min="0"
-                                    max="100"
-                                    value={car.battery}
-                                    onChange={(e) => handleChange('battery', e.target.value)}
+                                    min="1980"
+                                    max={currentYear + 1}
+                                    value={car.year}
+                                    onChange={(e) => handleChange('year', parseInt(e.target.value))}
+                                    className="year-slider"
                                 />
-                                <span className="range-value">{car.battery}%</span>
+                                <div className="year-labels">
+                                    <span>1980</span>
+                                    <span className="year-value">{car.year}</span>
+                                    <span>{currentYear + 1}</span>
+                                </div>
                             </div>
-                        </div>
-
-                        <div className="form-group">
-                            <label>Dojezd (km)</label>
-                            <input
-                                type="number"
-                                min="0"
-                                max="1000"
-                                value={car.range}
-                                onChange={(e) => handleChange('range', e.target.value)}
-                            />
                         </div>
                     </div>
 
                     <div className="form-group">
-                        <label>Lokace</label>
+                        <label>📍 Lokace</label>
                         <input
                             type="text"
                             placeholder="Město, ulice..."
@@ -449,44 +415,35 @@ function CarDetailModal({ car, onClose, onLockToggle, onEdit, onDelete }) {
                     <button className="modal-close" onClick={onClose}>✕</button>
                 </div>
 
-                <div className="battery-section">
-                    <div className="battery-info">
-                        <div>
-                            <p className="info-label">📊 Dojezd</p>
-                            <p className="info-value">{car.status.range} km</p>
-                        </div>
-                        <div>
-                            <p className="info-label">🔋 Baterie</p>
-                            <p className="info-value accent-text">{car.status.battery}%</p>
-                        </div>
+                <div className="car-detail-info">
+                    <div className="detail-row">
+                        <span className="detail-label">📅 Rok výroby</span>
+                        <span className="detail-value">{car.year}</span>
                     </div>
-                    <div className="battery-bar battery-bar-lg">
-                        <div className="battery-fill" style={{ width: `${car.status.battery}%` }} />
+                    <div className="detail-row">
+                        <span className="detail-label">📍 Poloha</span>
+                        <span className="detail-value">{car.status.location || 'Nezadáno'}</span>
                     </div>
+                    <div className="detail-row">
+                        <span className="detail-label">🔒 Stav zámků</span>
+                        <span className="detail-value" style={{ color: car.status.locked ? '#c75c5c' : '#3c6e47' }}>
+                            {car.status.locked ? 'Zamčeno' : 'Odčeno'}
+                        </span>
+                    </div>
+                </div>
 
-                    <div className="detail-actions">
-                        <button className="btn-outline lock-btn" onClick={() => onLockToggle(car.id)}>
-                            {car.status.locked ? '🔓 Odemknout' : '🔒 Zamknout'}
+                <div className="detail-actions">
+                    <button className="btn-outline lock-btn" onClick={() => onLockToggle(car.id)}>
+                        {car.status.locked ? '🔓 Odemknout' : '🔒 Zamknout'}
+                    </button>
+                    <div className="detail-action-buttons">
+                        <button className="icon-btn edit-btn" onClick={onEdit} title="Upravit">
+                            ✏️ Upravit
                         </button>
-                        <div className="detail-action-buttons">
-                            <button className="icon-btn edit-btn" onClick={onEdit} title="Upravit">
-                                ✏️ Upravit
-                            </button>
-                            <button className="icon-btn delete-btn" onClick={onDelete} title="Smazat">
-                                🗑️ Smazat
-                            </button>
-                        </div>
+                        <button className="icon-btn delete-btn" onClick={onDelete} title="Smazat">
+                            🗑️ Smazat
+                        </button>
                     </div>
-                </div>
-
-                <div className="section">
-                    <h4>📍 Poloha</h4>
-                    <p>{car.status.location || 'Nezadáno'}</p>
-                </div>
-
-                <div className="section">
-                    <h4>📅 Rok výroby</h4>
-                    <p>{car.year}</p>
                 </div>
 
                 {car.history?.length > 0 && (

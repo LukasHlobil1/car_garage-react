@@ -10,8 +10,8 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', sans-serif;
-  background: linear-gradient(135deg, #fefefe 0%, #f8fafc 100%);
-  color: #1e293b;
+  background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 100%);
+  color: #2c3e2f;
   min-height: 100vh;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -22,17 +22,26 @@ body {
    TLAČÍTKO PŘIDAT AUTO
 ============================================ */
 .add-button-container {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .add-car-btn {
   width: 100%;
-  padding: 14px;
-  font-size: 16px;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
+  background: linear-gradient(105deg, #3c6e47 0%, #4a7c55 100%);
+  border-radius: 60px;
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.add-car-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(60, 110, 71, 0.2);
 }
 
 /* ============================================
@@ -40,35 +49,41 @@ body {
 ============================================ */
 .empty-garage {
   text-align: center;
-  padding: 60px 20px;
-  background: rgba(0, 0, 0, 0.03);
-  border-radius: 28px;
+  padding: 80px 24px;
+  background: #ffffff;
+  border-radius: 32px;
   margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  border: 1px solid #e9ecef;
 }
 
 .empty-icon {
-  font-size: 64px;
+  font-size: 72px;
   margin-bottom: 20px;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 .empty-garage h3 {
   font-size: 24px;
+  font-weight: 500;
   margin-bottom: 10px;
-  color: #1a1a1a;
+  color: #2c3e2f;
 }
 
 .empty-garage p {
-  color: #666;
+  color: #6c7a6d;
+  font-size: 15px;
   margin-bottom: 0;
 }
 
 .no-results {
   text-align: center;
-  padding: 40px;
-  color: #666;
-  background: rgba(0, 0, 0, 0.02);
-  border-radius: 20px;
+  padding: 60px 24px;
+  color: #6c7a6d;
+  background: #ffffff;
+  border-radius: 28px;
+  border: 1px solid #e9ecef;
+  font-size: 15px;
 }
 
 /* ============================================
@@ -76,17 +91,17 @@ body {
 ============================================ */
 .car-card {
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
 .car-actions {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 18px;
+  right: 18px;
   display: flex;
-  gap: 8px;
+  gap: 10px;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.25s ease;
 }
 
 .car-card:hover .car-actions {
@@ -94,96 +109,123 @@ body {
 }
 
 .icon-btn {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #e0e0e0;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #e2e8e2;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   cursor: pointer;
   font-size: 14px;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(4px);
 }
 
 .icon-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .edit-btn:hover {
-  background: #0066cc;
+  background: #3c6e47;
   color: white;
-  border-color: #0066cc;
+  border-color: #3c6e47;
 }
 
 .delete-btn:hover {
-  background: #dc2626;
+  background: #c75c5c;
   color: white;
-  border-color: #dc2626;
+  border-color: #c75c5c;
 }
 
 .car-year {
-  background: #f0f0f0;
-  padding: 4px 10px;
-  border-radius: 20px;
+  background: #ecf3ec;
+  padding: 5px 12px;
+  border-radius: 40px;
   font-size: 12px;
   font-weight: 500;
-  color: #666;
+  color: #3c6e47;
+  letter-spacing: -0.2px;
 }
 
 /* ============================================
    DETAILNÍ AKCE
 ============================================ */
 .detail-actions {
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .detail-action-buttons {
   display: flex;
-  gap: 12px;
-  margin-top: 12px;
+  gap: 14px;
+  margin-top: 16px;
   justify-content: center;
 }
 
 .detail-action-buttons .icon-btn {
-  background: #f5f5f5;
+  background: #ffffff;
   width: auto;
-  padding: 8px 16px;
-  border-radius: 40px;
-  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 60px;
+  gap: 8px;
   font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #e2e8e2;
 }
 
 .detail-action-buttons .edit-btn:hover {
-  background: #0066cc;
+  background: #3c6e47;
   color: white;
+  border-color: #3c6e47;
 }
 
 .detail-action-buttons .delete-btn:hover {
-  background: #dc2626;
+  background: #c75c5c;
   color: white;
+  border-color: #c75c5c;
 }
 
 /* ============================================
-   RANGE SLIDER
+   RANGE SLIDER (MODERNÍ)
 ============================================ */
 .range-wrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 }
 
 .range-wrapper input {
   flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  background: #e2e8e2;
+  border-radius: 4px;
+  outline: none;
+}
+
+.range-wrapper input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #3c6e47;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(60, 110, 71, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.range-wrapper input::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
 }
 
 .range-value {
-  min-width: 45px;
+  min-width: 48px;
   text-align: right;
-  font-weight: 600;
-  color: #0066cc;
+  font-weight: 500;
+  color: #3c6e47;
+  font-size: 14px;
 }
 
 /* ============================================
@@ -193,40 +235,50 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .app-header h1 {
-  font-size: 28px;
+  font-size: 30px;
+  font-weight: 600;
   margin: 0;
-  color: #1a1a1a;
+  color: #2c3e2f;
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, #2c3e2f 0%, #4a7c55 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .subtitle {
   font-size: 14px;
-  color: #666;
+  color: #6c7a6d;
   margin-top: 4px;
+  font-weight: 450;
 }
 
-/* Elegantní karty v EV stylu – jako leštěný lak */
+/* ============================================
+   KARTY (GLASS – ČISTÝ MODERNÍ STYL)
+============================================ */
 .glass-card {
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(0px);
+  background: #ffffff;
   border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid #ecf3ec;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
   transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
 
 .glass-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.04);
-  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 24px 48px -12px rgba(60, 110, 71, 0.12);
+  border-color: #d4e2d4;
 }
 
-/* Akcenty – elektrizující modrá jako náboj */
+/* ============================================
+   AKCENTY – JEMNÁ ZELENÁ
+============================================ */
 .accent-text {
-  background: linear-gradient(135deg, #0066ff 0%, #3b82f6 50%, #60a5fa 100%);
+  background: linear-gradient(135deg, #3c6e47 0%, #5b8c65 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -235,25 +287,26 @@ body {
 }
 
 .accent-border {
-  border: 1px solid transparent;
-  background: linear-gradient(white, white) padding-box,
-  linear-gradient(135deg, #0066ff, #60a5fa) border-box;
-  border-radius: 20px;
+  border: 1px solid #d4e2d4;
+  border-radius: 24px;
+  background: #ffffff;
 }
 
-/* Tlačítka – jako dotykový panel v EV */
+/* ============================================
+   TLAČÍTKA (JEDNOTNÝ STYL)
+============================================ */
 .btn-primary {
-  background: linear-gradient(105deg, #0066ff 0%, #3b82f6 100%);
+  background: linear-gradient(105deg, #3c6e47 0%, #4a7c55 100%);
   border: none;
-  border-radius: 40px;
+  border-radius: 60px;
   padding: 12px 28px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   color: #ffffff;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
   letter-spacing: 0.2px;
-  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(60, 110, 71, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -265,13 +318,13 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.5s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 102, 255, 0.3);
+  box-shadow: 0 12px 24px rgba(60, 110, 71, 0.25);
 }
 
 .btn-primary:hover::before {
@@ -284,64 +337,349 @@ body {
 
 .btn-outline {
   background: transparent;
-  border: 1.5px solid rgba(0, 102, 255, 0.4);
-  border-radius: 40px;
+  border: 1.5px solid #cbdccb;
+  border-radius: 60px;
   padding: 12px 28px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
-  color: #0066ff;
+  color: #3c6e47;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
   letter-spacing: 0.2px;
-  backdrop-filter: blur(8px);
 }
 
 .btn-outline:hover {
-  border-color: #0066ff;
-  background: rgba(0, 102, 255, 0.04);
+  border-color: #3c6e47;
+  background: rgba(60, 110, 71, 0.04);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.1);
 }
 
 .btn-outline:active {
   transform: translateY(0);
 }
 
-/* Scrollbar – minimalistický, jako interiér EV */
+/* ============================================
+   FORMULÁŘ – ČISTÝ, MODERNÍ, ELEGANTNÍ
+============================================ */
+.add-car-form {
+  padding: 8px 0 4px;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #6c7a6d;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 14px 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8e2;
+  border-radius: 20px;
+  color: #2c3e2f;
+  font-size: 15px;
+  font-weight: 450;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #3c6e47;
+  box-shadow: 0 0 0 3px rgba(60, 110, 71, 0.1);
+}
+
+.form-group input::placeholder {
+  color: #b9c2b9;
+  font-weight: 400;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* Range slider ve formuláři */
+.form-group input[type="range"] {
+  padding: 0;
+  height: 4px;
+  background: #e2e8e2;
+  border: none;
+  border-radius: 4px;
+}
+
+.form-group input[type="range"]:focus {
+  box-shadow: none;
+}
+
+.form-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #ecf3ec;
+}
+
+.form-actions .btn-outline,
+.form-actions .btn-primary {
+  flex: 1;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ============================================
+   MODÁLNÍ OKNO
+============================================ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(44, 62, 47, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.25s ease;
+}
+
+.modal-content {
+  max-width: 560px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  border-radius: 32px;
+  background: #ffffff;
+  box-shadow: 0 32px 64px -24px rgba(44, 62, 47, 0.24);
+  animation: slideUp 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modal-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2c3e2f;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+.modal-close {
+  background: #f1f3f1;
+  border: none;
+  border-radius: 60px;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #6c7a6d;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  background: #e2e8e2;
+  color: #2c3e2f;
+  transform: scale(1.02);
+}
+
+/* ============================================
+   DETAIL AUTA (MODAL)
+============================================ */
+.battery-section {
+  background: #f8faf7;
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.battery-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.info-label {
+  color: #6c7a6d;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  margin-bottom: 4px;
+}
+
+.info-value {
+  font-size: 32px;
+  font-weight: 600;
+  color: #2c3e2f;
+  letter-spacing: -0.5px;
+}
+
+.battery-bar {
+  height: 6px;
+  background: #e2e8e2;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.battery-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3c6e47, #5b8c65);
+  border-radius: 6px;
+  transition: width 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.battery-bar-lg {
+  height: 8px;
+  margin-bottom: 20px;
+}
+
+.lock-btn {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.section h4 {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #6c7a6d;
+  margin-bottom: 12px;
+}
+
+.section p {
+  font-size: 15px;
+  color: #2c3e2f;
+  background: #f8faf7;
+  padding: 14px 18px;
+  border-radius: 20px;
+  margin: 0;
+}
+
+/* ============================================
+   HISTORIE
+============================================ */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #ecf3ec;
+  transition: all 0.2s ease;
+}
+
+.history-item:hover {
+  transform: translateX(6px);
+  background: #fafaf9;
+  padding-left: 12px;
+  border-radius: 20px;
+}
+
+.history-event {
+  font-weight: 500;
+  color: #2c3e2f;
+  margin-bottom: 2px;
+}
+
+.history-date {
+  font-size: 12px;
+  color: #9aa99a;
+}
+
+.history-value {
+  text-align: right;
+  font-weight: 500;
+  color: #3c6e47;
+}
+
+.history-note {
+  font-size: 11px;
+  color: #9aa99a;
+  font-weight: normal;
+}
+
+/* ============================================
+   SCROLLBAR
+============================================ */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #ecf3ec;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #cbd5e1, #94a3b8);
+  background: #cbdccb;
   border-radius: 10px;
-  transition: background 0.3s ease;
+  transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #94a3b8, #64748b);
+  background: #9ab89a;
 }
 
-/* Speciální EV prvky – jemná glow a hladké přechody */
-::selection {
-  background: rgba(0, 102, 255, 0.15);
-  color: #0066ff;
+/* ============================================
+   ANIMACE
+============================================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Elegantní focus pro přístupnost */
-:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.3);
-  border-radius: 12px;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Animace pro loading stav – jako nabíjení EV */
+.loading-pulse {
+  animation: chargePulse 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
 @keyframes chargePulse {
   0%, 100% {
     opacity: 0.6;
@@ -353,6 +691,49 @@ body {
   }
 }
 
-.loading-pulse {
-  animation: chargePulse 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+/* ============================================
+   RESPONZIVITA
+============================================ */
+@media (max-width: 640px) {
+  .modal-content {
+    padding: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .info-value {
+    font-size: 26px;
+  }
+
+  .app-header h1 {
+    font-size: 24px;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
+  .car-year {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+}
+
+/* ============================================
+   FOCUS & SELECTION
+============================================ */
+::selection {
+  background: rgba(60, 110, 71, 0.15);
+  color: #3c6e47;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(60, 110, 71, 0.25);
+  border-radius: 16px;
 }

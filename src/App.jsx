@@ -57,6 +57,8 @@ function App() {
         car.plate.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+
+
     const handleLockToggle = (carId) => {
         setCars(prev => prev.map(car => {
             if (car.id === carId) {

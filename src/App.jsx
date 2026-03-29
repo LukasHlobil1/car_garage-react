@@ -200,18 +200,31 @@ function Garage() {
 
             setSmartcarCars(smartcarData);
 
-            // Merge Smartcar aut s manuálními - použijeme funkční update, aby nedošlo k přepsání
-            // existujícího stavu (např. když se načítá asynchronně a 'cars' může být ještě prázdné).
-            setCars(prevCars => {
-                // Necháme všechny manuální (ne-smartcar) z předchozího stavu
-                const manualCars = prevCars.filter(c => !c.isSmartcar);
+            // Merge Smartcar aut s manuálními načtenými přímo z localStorage
+            // (vyhneme se race condition, kdy by prev state mohl být stále prázdný)
+            const storedRaw = localStorage.getItem('myCars');
+            let manualCars = [];
+            if (storedRaw) {
+                try {
+                    const parsed = JSON.parse(storedRaw);
+                    if (Array.isArray(parsed)) {
+                        manualCars = parsed.filter(c => !c.isSmartcar);
+                    }
+                } catch (e) {
+                    console.error('Chyba při parsování uložených aut z localStorage:', e);
+                    manualCars = [];
+                }
+            }
 
-                // Zamezíme duplicitám Smartcar aut podle id
-                const existingIds = new Set(prevCars.map(c => c.id));
-                const newSmartCars = smartcarData.filter(s => !existingIds.has(s.id));
+            // Zamezíme duplicitám Smartcar aut podle id (pokud by v manuálních byla shoda)
+            const existingIds = new Set(manualCars.map(c => c.id));
+            const newSmartCars = smartcarData.filter(s => !existingIds.has(s.id));
 
-                return [...manualCars, ...newSmartCars];
-            });
+            const merged = [...manualCars, ...newSmartCars];
+
+            // Aktualizujeme stav a uložíme výsledek do localStorage, aby byl konzistentní
+            setCars(merged);
+            localStorage.setItem('myCars', JSON.stringify(merged));
 
         } catch (error) {
             console.error('Chyba při načítání Smartcar aut:', error);

@@ -236,7 +236,7 @@ function Garage() {
 
     // Přihlášení k Smartcar
     const connectSmartcar = () => {
-        window.location.href = 'https://connect.smartcar.com/oauth/authorize?response_type=code&client_id=2350e7c7-9f57-4b8e-b867-416cd1bb66ca&redirect_uri=http://localhost:5173/callback&scope=read_vehicle_info read_odometer read_location read_vin';
+        window.location.href = 'https://connect.smartcar.com/oauth/authorize?response_type=code&client_id=2350e7c7-9f57-4b8e-b867-416cd1bb66ca&redirect_uri=https://car-garage-19b30.web.app/&scope=read_vehicle_info read_odometer read_location read_vin';
     };
 
     // Odhlášení Smartcar

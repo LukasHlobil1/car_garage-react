@@ -200,9 +200,18 @@ function Garage() {
 
             setSmartcarCars(smartcarData);
 
-            // Merge Smartcar aut s manuálními
-            const allCars = [...cars, ...smartcarData];
-            setCars(allCars);
+            // Merge Smartcar aut s manuálními - použijeme funkční update, aby nedošlo k přepsání
+            // existujícího stavu (např. když se načítá asynchronně a 'cars' může být ještě prázdné).
+            setCars(prevCars => {
+                // Necháme všechny manuální (ne-smartcar) z předchozího stavu
+                const manualCars = prevCars.filter(c => !c.isSmartcar);
+
+                // Zamezíme duplicitám Smartcar aut podle id
+                const existingIds = new Set(prevCars.map(c => c.id));
+                const newSmartCars = smartcarData.filter(s => !existingIds.has(s.id));
+
+                return [...manualCars, ...newSmartCars];
+            });
 
         } catch (error) {
             console.error('Chyba při načítání Smartcar aut:', error);

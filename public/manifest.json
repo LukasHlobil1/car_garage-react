@@ -1,7 +1,7 @@
 {
-  "name": "Moje Garáž NEXT",
+  "name": "Moje Garáž ",
   "short_name": "MojeGaráž",
-  "description": "Sci-fi správa vozidel s neonovým designem",
+  "description": "Aplikace pro správu vozidel",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#00fff9",
